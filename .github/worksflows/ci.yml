@@ -1,0 +1,15 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2   # or actions/setup-node@v4, actions/setup-python@v5, …
+      - run: bun install             # the repository's setup command
+      - run: bun run check           # its test command
